@@ -12,19 +12,20 @@ int main(int argc, char *argv[]) {
     // the video capture object to capture frames form a video stream (e.g. mp4 file)
     VideoCapture capture(argv[1]);
     if(!capture.isOpened()){
-        cerr << "Failed to open the input file." << endl;
+        cerr << "Failed to open the input file: " << argv[1] << endl;
         return -1;
     }
 
     double fps = capture.get(CAP_PROP_FPS);
     auto width= static_cast<int>(capture.get(CAP_PROP_FRAME_WIDTH));
     auto height = static_cast<int>(capture.get(CAP_PROP_FRAME_WIDTH));
+    auto ex = static_cast<int>(capture.get(CAP_PROP_FOURCC));
     Size sz(width, height);
 
     // the video writer object to write frames in to a file.
-    VideoWriter writer(argv[2], CAP_FFMPEG, fps, sz);
+    VideoWriter writer(argv[2], ex, fps, sz);
     if(!writer.isOpened()){
-        cerr << "Failed to open the output file." << endl;
+        cerr << "Failed to open the output file: " << argv[2] << endl;
         return -1;
     }
 
