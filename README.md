@@ -12,6 +12,7 @@ Typing on the keyboard to operate and step to the next frame, currently support 
 * (other keys): only step to next frame
 
 The result will be a csv file with the logical structure like this:
+
 | record_id | start | end   |
 |:---------:|:-----:|:-----:|
 | 1         | 23    | 49    |
